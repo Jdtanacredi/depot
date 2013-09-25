@@ -11,12 +11,13 @@
 </head>
 
 <body class="<%= controller.controller_name %>">
-<!-- START_HIGHLIGHT -->
+
   <div id="banner">
     <%= image_tag("logo.png") %>
     <%= @page_title || "Pragmatic Bookshelf" %>
   </div>
   <div id="columns">
+    <!-- Sidebar with Cart-->
     <div id="side">
       <% if @cart %>
           <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
@@ -29,6 +30,16 @@
         <li><a href="http://www..../news">News</a></li>
         <li><a href="http://www..../contact">Contact</a></li>
       </ul>
+<!-- Admin Options and logout -->
+      <% if session[:user_id] %>
+        <ul>
+          <li><%= link_to 'Orders', orders_path %></li>
+          <li><%= link_to 'Products', products_path %></li>
+          <li><%= link_to 'Users', users_path %></li>
+        </ul>
+        <%= button_to 'Logout', logout_path, method: :delete %>
+      <% end %>
+
     </div>
     <div id="main">
 
@@ -36,6 +47,5 @@
 
     </div>
   </div>
-<!-- END_HIGHLIGHT -->
 </body>
 </html>
