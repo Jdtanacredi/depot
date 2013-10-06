@@ -6,6 +6,9 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+#stripe credit card payment
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
 group :production do
   gem 'mysql2'
 end
